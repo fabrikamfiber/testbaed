@@ -8,6 +8,9 @@
 	"vmName": {
       "value": "FabrikamTest0"
     },
+	    "vmLocation": {
+      "value": "West US"
+    },		
     "adminUsername": {
       "value": "vmuser"
     },

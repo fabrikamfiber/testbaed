@@ -2,6 +2,19 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+      "vmLocation": {
+      "type": "string",
+      "allowedValues": [
+        "West US",
+        "East US",
+        "West Europe",
+        "East Asia",
+        "Southeast Asia"
+      ],
+      "metadata": {
+        "description": "This is the location of the Virtual Machine"
+      }
+    },
     "newStorageAccountName": {
       "type": "string",
       "metadata": {
@@ -136,8 +149,8 @@
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[parameters('vmName')]",
-      "location": "[variables('location')]",
+      "name": "[parameters('vmName')]", 
+      "location": "[parameters('vmLocation')]",
       "dependsOn": [
         "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
@@ -147,7 +160,7 @@
           "vmSize": "[variables('vmSize')]"
         },
         "osProfile": {
-          "computername": "[variables('vmName')]",
+          "computername": "[parameters('vmName')]",
           "adminUsername": "[parameters('adminUsername')]",
           "adminPassword": "[parameters('adminPassword')]"
         },
