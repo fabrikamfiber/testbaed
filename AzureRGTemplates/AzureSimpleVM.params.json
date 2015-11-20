@@ -5,6 +5,9 @@
     "newStorageAccountName": {
       "value": "xyrgnps"
     },
+	"vmName": {
+      "value": "FabrikamTest0"
+    },
     "adminUsername": {
       "value": "vmuser"
     },
